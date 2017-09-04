@@ -5,11 +5,10 @@ var pointWrap = jdCarouse.querySelector('.point-wrap');
 var carouseTimer = null;
 // 获取屏幕的宽度
 var windowWidth = document.documentElement.offsetWidth;
-console.log(windowWidth);
 // 初始化
 var left,center,right;
 // 获取li的高度赋值给ul
-carouseWrap.style.height = carouseWrapLi[0].offsetHeight + 'px'; 
+carouseWrap.style.height = carouseWrapLi[0].offsetHeight + 'px';
 
 // 动态根据li的个数循环小圆点
 for(var i = 0; i < carouseWrapLi.length; i++){
