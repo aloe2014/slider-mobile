@@ -16,7 +16,7 @@ for(var i = 0; i < carouseWrapLi.length; i++){
   var li = document.createElement('li');
 // 如果是第一个，默认添加上当前类
  if(i == 0){
-   i.classList.add('active');
+   li.classList.add('active');
  }
  pointWrap.appendChild(li);
 }
