@@ -13,13 +13,12 @@ carouseWrap.style.height = carouseWrapLi[0].offsetHeight + 'px';
 
 // 动态根据li的个数循环小圆点
 for(var i = 0; i < carouseWrapLi.length; i++){
-	// 每循环一次 就创建一个Li出来
-	var li = document.createElement('li');
-	// 如果是第一个，默认添加上当前类
-	if(i == 0){
-		li.classList.add('active');
-	}
-	pointWrap.appendChild(li);
+  var li = document.createElement('li');
+// 如果是第一个，默认添加上当前类
+ if(i == 0){
+   i.classList.add('active');
+ }
+ pointWrap.appendChild(li);
 }
 
 // 将最初始的位置赋值
@@ -32,7 +31,7 @@ carouseWrapLi[center].style.transform = 'translateX(0px)';
 carouseWrapLi[right].style.transform = 'translateX('+ windowWidth +'px)';
 // 看到下一张的逻辑
 function showNext(){
-	// 轮转下标
+	// 轮换下标
 	left = center;
 	center = right;
 	right++;
@@ -44,7 +43,7 @@ function showNext(){
 	// 给元素添加过渡
 	carouseWrapLi[center].style.transition = 'transform .5s';
 	carouseWrapLi[left].style.transition = 'transform .5s';
-	// 右边的图片永远是替补图片，所以不需要走过渡，因为走过渡会穿帮
+	// 右边的图片是替补图片，不需要走过渡
 	carouseWrapLi[right].style.transition = 'none';
 
 	// 设置小圆点
@@ -57,7 +56,7 @@ function showNext(){
 }
 // 看到上一张的逻辑
 function showPrev(){
-	// 轮转下标
+	// 轮换下标
 	right = center;
 	center = left;
 	left--;
@@ -69,7 +68,7 @@ function showPrev(){
 	// 给元素添加过渡
 	carouseWrapLi[center].style.transition = 'transform .5s';
 	carouseWrapLi[left].style.transition = 'none';
-	// 右边的图片永远是替补图片，所以不需要走过渡，因为走过渡会穿帮
+	// 右边的图片是替补图片，不需要过渡，过渡会穿帮
 	carouseWrapLi[right].style.transition = 'transform .5s';
 
 	// 设置小圆点
@@ -80,11 +79,11 @@ function showPrev(){
 	carouseWrapLi[left].style.transform = 'translateX('+ -windowWidth +'px)';
 	carouseWrapLi[right].style.transform = 'translateX('+ windowWidth +'px)';
 }
-// 在这里去获取小圆点，不要在上面，因为在上面获取那个时候还没有被创建出来
+// 在这里去获取小圆点，因为在上面获取时候还没有被创建出来
 var pointWrapLi = pointWrap.querySelectorAll('li');
 
+//给当前的小圆点添加active类
 function setPoint(){
-	// 让所有的小圆点都干掉active类
 	for(var i = 0; i < pointWrapLi.length; i++){
 		pointWrapLi[i].classList.remove('active');
 	}
@@ -132,10 +131,10 @@ function touchendHandler(event){
 	// 判定是否滑动成功
 	var endX = event.changedTouches[0].pageX - startX;
 	// 往左滑动成功
-	// 滑动的距离超过屏幕的三分之一或者滑动的时间小于300同时滑动的距离大于30px则判断滑动成功
-	if(endX < (-windowWidth/3) || (dTime < 300 && endX < -30)){
+	// 滑动的距离超过屏幕的四分之一或者滑动的时间小于200同时滑动的距离大于30px则判断滑动成功
+	if(endX < (-windowWidth/4) || (dTime < 200 && endX < -30)){
 		showNext();
-	}else if(endX > (windowWidth/3) || (dTime < 300 && endX > 30)){
+	}else if(endX > (windowWidth/4) || (dTime < 200 && endX > 30)){
 		showPrev();
 	}else{
 		// 给所有的元素添加上过渡
