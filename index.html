@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Document</title>
+	<style>
+	*{
+			padding:0;
+			margin:0;
+			list-style-type: none;
+		}
+	.jd-carouse {
+		position: relative;
+		overflow: hidden;
+		margin:100px auto 0;
+	}
+	.carouse-wrap {
+		position: relative;
+		min-height: 143px;
+	}
+
+	.carouse-wrap li {
+		width: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+		/* 不建议用left去移动位置 ，因为这样移动的是原点的原点*/
+		-webkit-transform : translateX(100%);
+		transform : translateX(100%);
+	}
+	.point-wrap {
+		text-align: center;
+		font-size: 0;
+		position: absolute;
+		left: 0;
+		bottom: 10px;
+		width: 100%;
+	}
+	.point-wrap li {
+		width: 7px;
+		height: 7px;
+		border:1px solid #fff;
+		border-radius: 50%;
+		display: inline-block;
+		margin: 0 3px;
+	}
+	.point-wrap li.active {
+		background-color: #fff;
+	}
+	.point-wrap li img {
+		width: 100%;
+	}
+
+	</style>
+</head>
+<body>
+	<div class="jd-carouse">
+		<ul class="carouse-wrap">
+			<li><a href="#"><img src="imgs/1.jpg"></a></li>
+			<li><a href="#"><img src="imgs/2.jpg"></a></li>
+			<li><a href="#"><img src="imgs/3.jpg"></a></li>
+			<li><a href="#"><img src="imgs/4.jpg"></a></li>
+		</ul>
+		<ol class="point-wrap">
+		</ol>
+	</div>
+	<script src="./index.js"></script>
+</body>
+</html>
